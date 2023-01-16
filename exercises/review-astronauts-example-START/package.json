@@ -1,0 +1,24 @@
+{
+  "name": "review-astronauts-example-start",
+  "version": "0.0.1",
+  "description": "Javascript Review",
+  "main": "index.js",
+  "source": "index.html",
+  "scripts": {
+    "test": "echo \"Hello this is a cle tool\"",
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "DMIT2008"
+  },
+  "author": "Kierin Wanless",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  }
+}
