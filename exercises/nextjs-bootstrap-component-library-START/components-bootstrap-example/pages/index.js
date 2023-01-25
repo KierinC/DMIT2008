@@ -1,9 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// External Library Components
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+// My own Custom Components
+import ComponentLibrariesList from '@/components/ComponentsLibrariesList';
 
 export default function Home() {
   return (
@@ -14,8 +18,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
-        
+      <main>
+      <Container>
+        <Row>
+          <h1>Example of using Bootstrap</h1>
+        </Row>
+        <Row>
+          <Col>
+            <h4>Available Componenet Libraries</h4>
+            <ComponentLibrariesList/>
+          </Col>
+          <Col>
+            <h4>Wow Buttons!</h4>
+            <Button variant="outline-light">Coolest Button Ever</Button>
+          </Col>
+        </Row>
+      </Container>
       </main>
     </>
   )
