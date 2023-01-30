@@ -1,3 +1,5 @@
+import styles from '../styles/SimpsonsCharacters.module.scss'
+
 const SIMPSON_CHARACTERS = [
   "Homer Simpson",
   "Bart Simpson",
@@ -11,9 +13,14 @@ const SIMPSON_CHARACTERS = [
 ]
 
 export default function SimpsonsCharacters() {
-  return <ul>
+  return <ul className={styles.list}>
     {SIMPSON_CHARACTERS.map((characterName, index)=> {
-      return <li key={index}>{characterName}</li>
+      return <li
+        className={`${styles['list-item']} ${styles.spacing}`}
+        key={index}
+      >
+        {characterName}
+      </li>
     })}
   </ul>
 }
