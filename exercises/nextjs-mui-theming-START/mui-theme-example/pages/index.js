@@ -3,9 +3,11 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 // material ui imports.
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import Box from '@mui/material/Box'
+import CoffeeTwoToneIcon from '@mui/icons-material/CoffeeTwoTone';
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Rating from '@mui/material/Rating'
 
 export default function Home() {
   return (
@@ -25,16 +27,25 @@ export default function Home() {
         />
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <Container maxWidth="md">
           <Box sx={{ my: 4 }}>
-            <Typography variant="h2" component="h2">
+            <Typography
+            variant="h2"
+            component="h2"
+            color='primary'
+            >
               MUI Example
             </Typography>
-            <Typography variant="p" component="p">
-              You can perhaps see why this is a popular package.
+            <CoffeeTwoToneIcon color='secondary' />
+            <Typography
+            variant="p"
+            component="p"
+            color='secondary'
+            >
+              Rate the coffee you're drinking
             </Typography>
-            
+            <Rating />
           </Box>
         </Container>
       </main>
