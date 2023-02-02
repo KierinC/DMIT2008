@@ -17,6 +17,7 @@
 *.gz
 *.iso
 *.jar
+*.pdf
 *.ps1
 *.rar
 *.tar

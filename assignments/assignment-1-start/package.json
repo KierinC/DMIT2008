@@ -1,0 +1,21 @@
+{
+  "name": "assignment-1-kierinwanless",
+  "version": "0.0.1",
+  "description": "Javascript Review",
+  "main": "index.js",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "DMIT2008"
+  },
+  "author": "Kierin Wanless",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "parcel": "^2.8.3"
+  }
+}
