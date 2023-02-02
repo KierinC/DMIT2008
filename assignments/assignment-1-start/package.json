@@ -15,7 +15,9 @@
   "author": "Kierin Wanless",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.2.3"
+  },
+  "devDependencies": {
     "parcel": "^2.8.3"
   }
 }

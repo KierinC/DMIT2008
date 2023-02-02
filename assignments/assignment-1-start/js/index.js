@@ -6,4 +6,20 @@
 // import bootstrap here.
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import renderweather from './dom/weather.js'
+import { getWeather } from './api/base'
+import { renderWeather } from './dom/weather'
+
+const weatherSearch = document.querySelector('#weather-search')
+const cityInput = document.querySelector('.form-control')
+const weatherContainer = document.querySelector('.weather-container')
+
+weatherSearch.addEventListener('submit', (evt) => {
+  evt.preventDefault()
+
+  console.log(cityInput.value)
+
+  getWeather(cityInput.value).then(data => {
+    console.log(data)
+    renderWeather(data, weatherContainer)
+  });
+})
