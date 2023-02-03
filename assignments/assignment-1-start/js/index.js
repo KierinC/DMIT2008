@@ -16,10 +16,7 @@ const weatherContainer = document.querySelector('.weather-container')
 weatherSearch.addEventListener('submit', (evt) => {
   evt.preventDefault()
 
-  console.log(cityInput.value)
-
   getWeather(cityInput.value).then(data => {
-    console.log(data)
     renderWeather(data, weatherContainer)
   });
 })
