@@ -10,9 +10,33 @@ import Container from '@mui/material/Container';
 
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 
 export default function Home() {
 
+  const [quotedata, setQuoteData] = useState({
+    quote: 'Quote Data',
+    author: 'Author Here'
+  })
+
+  const loadNewQuote = () => {
+    const RANDOM_QUOTES = 'http://localhost:5000/quotes'
+    fetch(RANDOM_QUOTES)
+    .then((response) => {
+      return response.json()
+    }).then((data) => {
+      console.log(data)
+      let id = Math.floor(
+        Math.random()*data.length
+      )
+      let fetchedQuote = data[id]
+      // call setQuoteData
+      setQuoteData({
+        quote: fetchedQuote.q,
+        author: fetchedQuote.a
+      })
+    })
+  }
 
   return (
     <div>
@@ -42,7 +66,7 @@ export default function Home() {
             }}
           >
             <Typography variant="h5" align="center" color="text.primary" paragraph>
-              Quote here.
+              {quotedata.quote}
             </Typography>
             <Typography
               component="h1"
@@ -51,7 +75,7 @@ export default function Home() {
               color="text.secondary"
               gutterBottom
             >
-              Author here
+              {quotedata.author}
             </Typography>
             <Box
              display="flex"
@@ -60,6 +84,7 @@ export default function Home() {
             >
               <Button
                 variant="contained"
+                onClick={loadNewQuote}
               >
                 Get New Quote
               </Button>
