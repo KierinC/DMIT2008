@@ -11,6 +11,12 @@
       "title": "The Lord of the rings",
       "comment": "A classic movie and a classic book series as well!",
       "rating": 10
-    } 
+    },
+    {
+      "title": "Forest Gump",
+      "comment": "tom hanks should have ran harder",
+      "rating": 6,
+      "id": 3
+    }
   ]
 }
