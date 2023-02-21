@@ -20,7 +20,6 @@ export default function Home() {
 
       <main className={styles.main}>
         <Container>
-          <NavBar/>
           <Typography
           variant='h2'
           component='h2'
