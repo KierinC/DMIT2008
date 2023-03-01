@@ -15,6 +15,13 @@ import { getReviews } from '../utils/api/reviews';
 export default function Home() {
   const [reviews, setReviews] = useState([])
 
+  const removeFromReviews = (id) => {
+    let newReviews = reviews.filter((review) => {
+      return review.id !== id
+    })
+    setReviews(newReviews)
+  }
+
   const loadAllReviewsButton = () => {
     getReviews().then((data)=> {
       setReviews(data)
@@ -53,9 +60,11 @@ export default function Home() {
           {reviews.map((adaptation, index)=> {
             return <AdaptationReviewCard
                 key={index}
+                id={adaptation.id}
                 rating={adaptation.rating}
                 title={adaptation.title}
                 comment={adaptation.comment}
+                removeFromReviews={removeFromReviews}
               />
           })}
         </Container>
