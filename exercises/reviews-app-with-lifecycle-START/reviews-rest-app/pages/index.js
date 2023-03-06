@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -29,9 +29,18 @@ import { getReviews, postReview } from '../utils/api/reviews.js'
 
 export default function Home() {
   const [reviews, setReviews] = useState([])
+  const [reviewsAdded, setReviewsAdded] = useState(0)
   const [title, setTitle] = useState("")
   const [comments, setComments] = useState("")
   const [rating, setRating] = useState(0)
+
+  useEffect(() => {
+    loadAllReviews()
+  })
+
+  useEffect(() => {
+    setReviewsAdded(reviews.length)
+  }, [reviews])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -44,7 +53,7 @@ export default function Home() {
       })
   }
 
-  const loadAllReviewsButton = () => {
+  const loadAllReviews = () => {
     getReviews().then((data)=> {
       setReviews(data)
     })
@@ -130,19 +139,6 @@ export default function Home() {
               </Grid>
             </Grid>
           </form>
-          <Box
-            sx={{
-              pt: 2,
-              pb: 2,
-            }}
-          >
-            <Button
-              variant="contained"
-              onClick={loadAllReviewsButton}
-            >
-              Load All Current Reviews
-            </Button>
-          </Box>
           {reviews.map((adaptation, index)=> {
             return <AdaptationReviewCard
                 key={index}
