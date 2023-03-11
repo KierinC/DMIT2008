@@ -39,8 +39,6 @@ export default function Home() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    console.log("Hello")
-
     if (validateSubmit()) {
       let newBook = {
       title: title,
