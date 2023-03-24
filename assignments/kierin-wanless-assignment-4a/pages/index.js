@@ -28,6 +28,9 @@ import { POPULAR_AUTHORS } from '../utils/constants/popular_authors';
 
 
 export default function Home() {
+  const [authorKey, setAuthorKey] = useState("OL23919A")
+  const [authorData, setAuthorData] = useState()
+
 
   return (
     <div>
@@ -95,7 +98,7 @@ export default function Home() {
                       <ListItem
                         secondaryAction={
                           <Button
-                           
+                           key={authorKey}
                           >show</Button>
                         }
                       >
