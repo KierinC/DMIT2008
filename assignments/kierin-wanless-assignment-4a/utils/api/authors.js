@@ -1,6 +1,6 @@
 import { BASE_URL } from "./base";
 
-const getAuthor = (authorkey) => {
+export default function getAuthor (authorkey) {
   return fetch(`${BASE_URL}/authors/${authorkey}.json`) // promise
     .then((response)=> {
       return response.json() // promise

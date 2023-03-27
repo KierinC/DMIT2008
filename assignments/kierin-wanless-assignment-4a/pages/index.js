@@ -25,11 +25,16 @@ import Paper from '@mui/material/Paper';
 import Navbar from '../components/Navbar'
 
 import { POPULAR_AUTHORS } from '../utils/constants/popular_authors';
+import getAuthor from '../utils/api/authors';
 
 
 export default function Home() {
   const [authorKey, setAuthorKey] = useState("OL23919A")
-  const [authorData, setAuthorData] = useState()
+  const [authorData, setAuthorData] = useState({
+    authorname: 'Author Name',
+    authorbirthdate: 'Author Birthdate',
+    authordeathdate: 'Author Deathdate'
+  })
 
 
   return (
@@ -75,8 +80,6 @@ export default function Home() {
                     </TableBody>
                     </Table>
                 </TableContainer>
-
-
               </Box>
             </Grid>
             <Grid item xs={4}>
