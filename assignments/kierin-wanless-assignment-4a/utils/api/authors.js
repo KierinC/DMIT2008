@@ -9,4 +9,13 @@ const getAuthor = (authorkey) => {
     })
 }
 
-export { getAuthor }
+const getBooks = (authorkey) => {
+  return fetch(`${BASE_URL}/authors/${authorkey}/works.json`) // promise
+    .then((response)=> {
+      return response.json() // promise
+    }).then((data)=> {
+      return data // what's returned from get author
+    })
+}
+
+export { getAuthor, getBooks }

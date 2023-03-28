@@ -1,9 +1,8 @@
-import { Card } from "@mui/material";
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
 
 const AuthorInfo = (props) => {
-  return <Card>
+  return <>
     <Typography
         component="h1"
         variant="h4"
@@ -11,12 +10,12 @@ const AuthorInfo = (props) => {
         color="text.primary"
         gutterBottom
       >
-        {props.authorname}
+        {props.authorData.name}
       </Typography>
       <Typography  align="center" color="text.primary" paragraph>
-        {props.authorbirthdate} - DEATHDATE OR PRESENT DAY HERE
+        {props.authorData.birth_date} - {(props.authorData.death_date === "") ? props.authorData.death_date : "Present"}
       </Typography>
-  </Card>
+  </>
 }
 
 export { AuthorInfo }
