@@ -25,17 +25,19 @@ import Paper from '@mui/material/Paper';
 import Navbar from '../components/Navbar'
 
 import { POPULAR_AUTHORS } from '../utils/constants/popular_authors';
-import getAuthor from '../utils/api/authors';
-
+import { getAuthor } from '../utils/api/authors';
+import AuthorInfo from '../components/AuthorInfo';
 
 export default function Home() {
   const [authorKey, setAuthorKey] = useState("OL23919A")
-  const [authorData, setAuthorData] = useState({
-    authorname: 'Author Name',
-    authorbirthdate: 'Author Birthdate',
-    authordeathdate: 'Author Deathdate'
-  })
+  const [authorData, setAuthorData] = useState([])
 
+  useEffect(() => {
+    getAuthor(authorKey).then((data) => {
+      console.log(data)
+      setAuthorData(data)
+    })
+  }, [authorKey])
 
   return (
     <div>
@@ -57,10 +59,10 @@ export default function Home() {
                   color="text.primary"
                   gutterBottom
                 >
-                  NAME HERE
+                  {authorData.name}
                 </Typography>
                 <Typography  align="center" color="text.primary" paragraph>
-                  BIRTHDATE HERE - DEATHDATE OR PRESENT DAY HERE
+                  {authorData.birth_date} - {(authorData.death_date === "") ? authorData.death_date : "Present"}
                 </Typography>
                 <TableContainer component={Paper}>
                     <Table>

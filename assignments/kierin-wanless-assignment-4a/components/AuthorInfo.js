@@ -1,7 +1,8 @@
 import { Card } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useEffect } from "react";
 
-export default function AuthorInfo(props) {
+const AuthorInfo = (props) => {
   return <Card>
     <Typography
         component="h1"
@@ -17,3 +18,5 @@ export default function AuthorInfo(props) {
       </Typography>
   </Card>
 }
+
+export { AuthorInfo }
