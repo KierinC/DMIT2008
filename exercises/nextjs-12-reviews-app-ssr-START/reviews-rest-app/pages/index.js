@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 
+import {router, useRouter} from 'next/router'
+
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -30,23 +32,33 @@ import { getReviews, postReview } from '../utils/api/reviews.js'
 // the server side
 export async function getServerSideProps(context) {
   //get the reviews
-
+  const reviews = await getReviews()
   //return them as a prop
-  
+  return {
+    props: {
+      reviews: reviews
+    }
+  }
 }
 
 // the client side
-export default function Home() {
+export default function Home(props) {
+  // router
+  const router = useRouter()
+
   const [reviews, setReviews] = useState([])
   const [title, setTitle] = useState("")
   const [comments, setComments] = useState("")
   const [rating, setRating] = useState(0)
 
+  // rehydration
+  const refreshData = () => {
+    router.replace(router.asPath)
+  }
+
   // on the client side, our function will fetch
   // all of our reviews on loading of the page.
-  useEffect(()=> {
-    loadAllReviews()
-  }, [])
+
 
   // for debugging "reviews" purposes only
   useEffect(()=> {
@@ -54,10 +66,7 @@ export default function Home() {
   }, [reviews])
 
   const deleteReviewItem = (deleteReviewId) => {
-    let allReviews = reviews.filter((review)=> {
-      return review.id !== deleteReviewId
-    })
-    setReviews(allReviews)
+    refreshData()
   }
 
   const handleSubmit = (event) => {
@@ -67,14 +76,8 @@ export default function Home() {
         comment: comments,
         rating
       }).then((data)=> {
-        setReviews([data, ...reviews])
+        refreshData()
       })
-  }
-
-  const loadAllReviews = () => {
-    getReviews().then((data)=> {
-      setReviews(data)
-    })
   }
 
   return (
@@ -163,7 +166,7 @@ export default function Home() {
               pb: 2,
             }}
           >
-          {reviews.map((adaptation, index)=> {
+          {props.reviews.map((adaptation, index)=> {
             return <AdaptationReviewCard
                 key={index}
                 id={adaptation.id}
