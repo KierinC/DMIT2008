@@ -7,7 +7,6 @@ import TableRow from '@mui/material/TableRow';
 
 import Paper from '@mui/material/Paper';
 
-
 const BooksTable = (props) => {
   let books = Object.values(props.authorBooks.entries)
 
@@ -19,8 +18,10 @@ const BooksTable = (props) => {
       </TableRow>
   </TableHead>
   <TableBody>
-      {books.map((book) => {
-        return <TableRow>
+      {books.map((book, index) => {
+        return <TableRow
+          key={index}
+        >
           <TableCell>
             {book.title}
           </TableCell>
