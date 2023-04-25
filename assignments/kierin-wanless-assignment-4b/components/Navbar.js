@@ -1,6 +1,7 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link'
 
 
 export default function Navbar(props) {
@@ -13,6 +14,7 @@ export default function Navbar(props) {
       >
         Our Library
       </Typography>
+      <Link href="/">Home</Link>
     </Toolbar>
   </AppBar>
 }

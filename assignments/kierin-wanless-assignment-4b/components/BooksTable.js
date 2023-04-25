@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import Paper from '@mui/material/Paper';
 
 import Table from '@mui/material/Table';
@@ -7,8 +9,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+import Button from '@mui/material/Button'
+
 export default function BooksTable(props) {
-    return <TableContainer component={Paper}>
+
+  const router = useRouter()
+
+  const navigateToBookPage = () => {
+    router.push(`/book/${props.id}`)
+  }
+
+  return <TableContainer component={Paper}>
     <Table>
       <TableHead>
         <TableRow>
@@ -22,6 +33,13 @@ export default function BooksTable(props) {
             >
                <TableCell>
                   {book.title}
+              </TableCell>
+              <TableCell>
+                <Button
+                onClick={navigateToBookPage}
+                >
+                  details
+                </Button>
               </TableCell>
             </TableRow>
           })}

@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Agency(props) {
-  console.log(pops)
+  console.log(props)
   const agencyDetails = props.agencyInfo
 
   return <>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { router, useRouter } from 'next/router'
+
 import Head from 'next/head'
 
 import Box from '@mui/material/Box';
@@ -15,9 +17,17 @@ import { getAuthor, getAuthorWorks } from '../utils/api/authors';
 
 
 export default function Home() {
+  // router
+  const router = useRouter()
+
   const [authorKey, setAuthorKey] = useState("OL23919A")
   const [authorData, setAuthorData] = useState({})
   const [authorWorks, setAuthorWorks] = useState([])
+
+  // rehydration
+  const refreshData = () => {
+    router.replace(router.asPath)
+  }
 
   useEffect(()=> {
     getAuthor(authorKey).then((data)=> {
