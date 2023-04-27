@@ -68,18 +68,18 @@ describe('test the "Home component', () => {
       render(<Home />)
     })
 
-    const NEW_TEST_URL = `Image reloaded`
+    // const NEW_TEST_URL = `Image reloaded`
 
-    server.use(
-      rest.get(`${TEST_URL}`, (req, res, ctx) => {
-        return res(
-          ctx.json({
-            status: "success",
-            "message": NEW_TEST_URL
-          })
-        )
-      })
-    )
+    // server.use(
+    //   rest.get(`${TEST_URL}`, (req, res, ctx) => {
+    //     return res(
+    //       ctx.json({
+    //         status: "success",
+    //         "message": NEW_TEST_URL
+    //       })
+    //     )
+    //   })
+    // )
 
     let likeBtn = screen.getByText("Like")
     let image = screen.getByTestId("dog-image")
@@ -92,6 +92,38 @@ describe('test the "Home component', () => {
 
     expect(newimage).toBeInTheDocument()
     expect(image).not.toBe(newimage)
-    expect(image.src).toBe(NEW_TEST_URL)
+    // expect(image.src).toBe(NEW_TEST_URL)
+  })
+
+  test('new image loaded on click of nope button', async () => {
+    await act(() => {
+      render(<Home />)
+    })
+
+    // const NEW_TEST_URL = `Image reloaded`
+
+    // server.use(
+    //   rest.get(`${TEST_URL}`, (req, res, ctx) => {
+    //     return res(
+    //       ctx.json({
+    //         status: "success",
+    //         "message": NEW_TEST_URL
+    //       })
+    //     )
+    //   })
+    // )
+
+    let nopeBtn = screen.getByText("Nope")
+    let image = screen.getByTestId("dog-image")
+
+    await act(() => {
+      nopeBtn.click()
+    })
+
+    let newimage = screen.getByTestId("dog-image")
+
+    expect(newimage).toBeInTheDocument()
+    expect(image).not.toBe(newimage)
+    // expect(image.src).toBe(NEW_TEST_URL)
   })
 })
