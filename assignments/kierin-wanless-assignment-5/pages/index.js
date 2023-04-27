@@ -34,7 +34,7 @@ export default function Home() {
     getRandomDog().then((data) => {
       setLoading(false);
       // uncomment the following line to see the data returned from the API (in the tests)
-      console.log(data)
+      // console.log(data)
       setDogImage(data.message);
       setDogName(faker.name.firstName());
     })

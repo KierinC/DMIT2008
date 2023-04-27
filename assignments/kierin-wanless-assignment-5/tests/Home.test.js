@@ -68,8 +68,7 @@ describe('test the "Home component', () => {
       render(<Home />)
     })
 
-    const NEW_TEST_URL = `${BASE_URL}/api/breeds/image/random`
-    // const imgsrc = 
+    const NEW_TEST_URL = `Image reloaded`
 
     server.use(
       rest.get(`${TEST_URL}`, (req, res, ctx) => {
@@ -89,6 +88,10 @@ describe('test the "Home component', () => {
       likeBtn.click()
     })
 
+    let newimage = screen.getByTestId("dog-image")
+
+    expect(newimage).toBeInTheDocument()
+    expect(image).not.toBe(newimage)
     expect(image.src).toBe(NEW_TEST_URL)
   })
 })
